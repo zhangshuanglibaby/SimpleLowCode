@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面2</title>
+</head>
+
+<body>
+  <h1>页面2</h1>
+  <img src="https://js-cdn.modb.cc/image/indexlogo.png" alt="" width="200" height="100">
+  <script>
+    window.addEventListener("message", receiveMessage, false)
+
+    function receiveMessage(event) {
+      console.log(event, "=====>event")
+    }
+  </script>
+</body>
+
+</html>

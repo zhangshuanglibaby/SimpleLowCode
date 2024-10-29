@@ -1,0 +1,81 @@
+{
+  "name": "@simple/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/vue3/simple.umd.cjs",
+  "module": "./dist/vue3/simple.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3/simple.js",
+      "require": "./dist/vue3/simple.umd.cjs"
+    },
+    "./style": {
+      "import": "./dist/vue3/style.css",
+      "require": "./dist/vue3/style.css"
+    },
+    "./vue2": {
+      "import": "./dist/vue2/simple.js",
+      "require": "./dist/vue2/simple.umd.cjs"
+    },
+    "./vue2/style": {
+      "import": "./dist/vue2/style.css",
+      "require": "./dist/vue2/style.css"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm clear:dist && pnpm build:vue3 && pnpm build:vue2",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "build:vue3": "pnpm switch:vue3 && run-p type-check \"build-only {@}\" --",
+    "build:vue2": "pnpm switch:vue2 && run-p type-check \"build-only {@}\" --",
+    "switch:vue3": "vue-demi-switch 3 vue3",
+    "switch:vue2": "vue-demi-switch 2 vue2",
+    "clear": "rimraf dist ./node_modules",
+    "clear:dist": "rimraf dist"
+  },
+  "dependencies": {
+    "rimraf": "^6.0.1",
+    "vue": "^3.5.12",
+    "vue-demi": "^0.14.10",
+    "vue2": "npm:vue@~2.6.14",
+    "vue2.7": "npm:vue@~2.7.16",
+    "vue3": "npm:vue@~3"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "1.7.2",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.17.0",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/tsconfig": "^0.5.1",
+    "npm-run-all2": "^7.0.1",
+    "typescript": "~5.6.0",
+    "vite": "^5.4.10",
+    "vite-plugin-vue2": "^2.0.3",
+    "vue-tsc": "^2.1.6"
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "vue-template-compiler": {
+        "devDependencies": {
+          "vue": "^2.7.16"
+        }
+      },
+      "vue-template-compiler@2.7.16": {
+        "devDependencies": {
+          "vue": "^2.7.16"
+        }
+      }
+    }
+  }
+}

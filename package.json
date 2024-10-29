@@ -1,0 +1,27 @@
+{
+  "name": "simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "packageManager": "pnpm@8.10.4",
+  "engines": {
+    "pnpm": ">=7",
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npx only-allow pnpm",
+    "in": "pnpm i -r",
+    "clear": "rimraf --glob ./node_modules ./packages/**/node_modules ./packages/**/dist",
+    "ui": "pnpm -F @simple/ui dev",
+    "ui:build": "pnpm -F @simple/ui build",
+    "play:vue3": "pnpm -F @simple/ui build && pnpm -F @simple/playground-vue3 dev",
+    "play:vue2": "pnpm -F @simple/ui build && pnpm -F @simple/playground-vue2 dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  }
+}
